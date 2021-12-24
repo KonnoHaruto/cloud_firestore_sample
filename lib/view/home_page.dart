@@ -36,8 +36,7 @@ class HomePage extends StatelessWidget {
                     Map<String, dynamic> data =
                         document.data()! as Map<String, dynamic>;
                     return ListTile(
-                      title: Text(data['name']),
-                      subtitle: Text(data['description']),
+                      title: Text(data['content']),
                     );
                   }).toList(),
                 );
@@ -48,6 +47,7 @@ class HomePage extends StatelessWidget {
             return const AddingPage();
           }));
         },
+        child: const Icon(Icons.add),
       ),
     );
   }
