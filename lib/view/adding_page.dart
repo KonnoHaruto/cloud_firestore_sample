@@ -7,22 +7,22 @@ class AddingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textController = TextEditingController();
+    final textController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('sample'),
       ),
       body: Center(
         child: TextField(
-          controller: _textController,
+          controller: textController,
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           contentRef.add({
-            "content": _textController.text,
+            "content": textController.text,
           });
-          _textController.clear();
+          textController.clear();
           Navigator.pop(context);
         },
         child: const Icon(Icons.add),
