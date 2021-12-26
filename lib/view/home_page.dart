@@ -9,7 +9,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Stream<QuerySnapshot> _contentStream = contentRef.snapshots();
+    final Stream<QuerySnapshot> _contentStream =
+        contentRef.orderBy('content', descending: true).snapshots();
 
     return Scaffold(
       appBar: AppBar(
@@ -32,11 +33,14 @@ class HomePage extends StatelessWidget {
                 }
                 return ListView(
                   children:
-                      snapshot.data!.docs.map((DocumentSnapshot document) {
-                    Map<String, dynamic> data =
-                        document.data()! as Map<String, dynamic>;
+                      snapshot.data!.docs.map((QueryDocumentSnapshot data) {
+                    // Map<String, dynamic> data =
+                    //     collection.data()! as Map<String, dynamic>;
                     return ListTile(
                       title: Text(data['content']),
+                      onLongPress: () {
+                        data.reference.delete();
+                      },
                     );
                   }).toList(),
                 );
