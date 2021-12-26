@@ -10,7 +10,7 @@ class AddingPage extends StatelessWidget {
     final _textController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('playground'),
+        title: const Text('sample'),
       ),
       body: Center(
         child: TextField(

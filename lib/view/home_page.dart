@@ -21,21 +21,9 @@ class HomePage extends StatelessWidget {
               stream: _contentStream,
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(
-                    child: Text('Loading...'),
-                  );
-                } else if (snapshot.connectionState ==
-                    ConnectionState.waiting) {
-                  return const Center(
-                    child: Text('Loading...'),
-                  );
-                }
                 return ListView(
                   children:
                       snapshot.data!.docs.map((QueryDocumentSnapshot data) {
-                    // Map<String, dynamic> data =
-                    //     collection.data()! as Map<String, dynamic>;
                     return ListTile(
                       title: Text(data['content']),
                       onLongPress: () {
