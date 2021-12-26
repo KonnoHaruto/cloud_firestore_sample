@@ -21,6 +21,11 @@ class HomePage extends StatelessWidget {
               stream: _contentStream,
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: Text('Loading...'),
+                  );
+                }
                 return ListView(
                   children:
                       snapshot.data!.docs.map((QueryDocumentSnapshot data) {
